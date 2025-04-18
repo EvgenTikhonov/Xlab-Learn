@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Golf
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Player player;
+        private void Update()
+        {
+            // player.SetDown(Input.GetMouseButton(0));
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void OnDown()
+        {
+            player.SetDown(true);
+        }
+
+        public void OnUp()
+        {
+            player.SetDown(false);
+        }
+        private void Start()
+        {
+            if (player == null)
+            {
+                Debug.Log("Player is null!");
+            }
+        }
     }
 }

@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Stick : MonoBehaviour
+
+namespace Golf
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Stick : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public UnityEvent<Collider> onCollision;
+        private void OnCollisionEnter(Collision collision)
+        {
+            onCollision.Invoke(collision.collider);
+        }
     }
 }
